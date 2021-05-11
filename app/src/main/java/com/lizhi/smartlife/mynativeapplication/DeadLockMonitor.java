@@ -88,14 +88,14 @@ public class DeadLockMonitor {
                     continue;
                 }
 
-                Log.i(TAG, "startMonitor: blockThread = " + thread.getId() + ",threadAddress=" + threadAddress);
+                Log.i(TAG, "thread block ，getId = " + thread.getId() + ",threadAddress=" + threadAddress);
 
                 int blockThreadId = getContentThreadIdArt(threadAddress);
 
                 int curThreadId = getThreadIdFromThreadPtr(threadAddress);
 
                 if (blockThreadId != 0 && curThreadId != 0) {
-                    Log.w(TAG, "startMonitor: blockThread = " + blockThreadId + ",curThreadId=" + curThreadId);
+                    Log.w(TAG, "blockThread = " + blockThreadId + ",curThreadId=" + curThreadId);
 
                     //todo 最后一步是判断哪个线程造成死锁
 //                    deadLock.put(curThreadId, new DeadLockThread(curThreadId, blockThreadId, thread));
