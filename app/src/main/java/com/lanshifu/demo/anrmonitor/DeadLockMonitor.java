@@ -1,4 +1,4 @@
-package com.lizhi.smartlife.mynativeapplication;
+package com.lanshifu.demo.anrmonitor;
 
 import android.os.Build;
 import android.util.Log;
@@ -6,7 +6,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * @author lanxiaobin
@@ -98,10 +97,9 @@ public class DeadLockMonitor {
 
                 int curThreadId = getThreadIdFromThreadPtr(threadAddress);
 
+                Log.w(TAG, "blockThread = " + blockThreadId + ",curThreadId=" + curThreadId);
                 if (blockThreadId != 0 && curThreadId != 0) {
-                    Log.w(TAG, "blockThread = " + blockThreadId + ",curThreadId=" + curThreadId);
-
-                    //todo 最后一步是判断哪个线程造成死锁 1->2->3->1  1->2->1
+                    //最后一步是判断哪个线程造成死锁 1->2->3->1  1->2->1
                     deadLock.put(curThreadId, new DeadLockThread(curThreadId, blockThreadId, thread));
                 }
             }

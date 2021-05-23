@@ -20,10 +20,20 @@
         android:id="@+id/startMonitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="开始"
+        android:text="监控死锁"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="398dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sample_text"/>
+
+    <Button
+        android:id="@+id/startAnr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卡顿导致ANR"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="398dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sample_text"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

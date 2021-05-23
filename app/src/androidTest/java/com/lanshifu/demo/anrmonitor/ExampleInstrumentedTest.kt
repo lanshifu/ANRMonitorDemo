@@ -1,4 +1,4 @@
-package com.lizhi.smartlife.mynativeapplication
+package com.lanshifu.demo.anrmonitor
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

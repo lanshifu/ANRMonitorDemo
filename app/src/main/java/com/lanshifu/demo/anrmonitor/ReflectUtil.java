@@ -1,4 +1,4 @@
-package com.lizhi.smartlife.mynativeapplication;
+package com.lanshifu.demo.anrmonitor;
 
 //
 // Source code recreated from a .class file by IntelliJ IDEA
@@ -8,7 +8,6 @@ package com.lizhi.smartlife.mynativeapplication;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ReflectUtil {
@@ -71,11 +70,13 @@ public class ReflectUtil {
             field.setAccessible(true);
             return field.get(obj);
         } catch (Exception var3) {
+            throwBuildException(var3);
             return null;
         }
     }
 
     public static void throwBuildException(Exception t){
+        t.printStackTrace();
     }
 
 }

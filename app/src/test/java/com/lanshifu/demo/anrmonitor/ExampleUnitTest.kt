@@ -1,4 +1,4 @@
-package com.lizhi.smartlife.mynativeapplication
+package com.lanshifu.demo.anrmonitor
 
 import org.junit.Test
 
