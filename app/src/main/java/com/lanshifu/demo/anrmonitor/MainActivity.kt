@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         Thread.sleep(6000)
     }
 
+    private fun testDeadLockAnr() {
+
+    }
 
 
 }

@@ -30,8 +30,9 @@ JNIEXPORT jint JNICALL
 Java_com_lanshifu_demo_anrmonitor_DeadLockMonitor_nativeInit(JNIEnv *env, jobject thiz,jint level) {
 
     api_level = level;
-    // dlopen libart.so
 
+
+    // dlopen libart.so
     ndk_init(env);
 
     void *so_addr = ndk_dlopen("libart.so", RTLD_NOLOAD);
