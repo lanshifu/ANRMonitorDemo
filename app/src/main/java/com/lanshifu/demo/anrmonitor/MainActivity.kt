@@ -2,21 +2,29 @@ package com.lanshifu.demo.anrmonitor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val TAG = "MainActivity"
+    }
 
     val anrMonitor = AnrMonitor(this.lifecycle)
 
     val deadLockMonitor = DeadLockMonitor()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        deadLockMonitor.createDeadLock()
+        DeadLockUtil.createDeadLock()
 
         findViewById<Button>(R.id.startMonitor).setOnClickListener(View.OnClickListener {
             deadLockMonitor.startMonitor()
@@ -28,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testAnr(){
-        Thread.sleep(6000)
+        DeadLockUtil.createDeadLockAnr()
     }
 
     private fun testDeadLockAnr() {

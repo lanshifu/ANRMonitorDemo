@@ -13,58 +13,7 @@ import java.util.HashSet;
  */
 public class DeadLockMonitor {
 
-    Object deadLock1 = new Object();
-    Object deadLock2 = new Object();
-
     private String TAG = "DeadLockMonitor";
-
-    public DeadLockMonitor() {
-        System.loadLibrary("native-lib");
-    }
-
-
-    void createDeadLock() {
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (deadLock1) {
-                    try {
-                        sleep_(100);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Log.e(TAG, "thread1 wait to get deadLock2,currentThread id = " + Thread.currentThread().getId());
-                    synchronized (deadLock2) {
-                        Log.e(TAG, "thread1");
-                    }
-                }
-            }
-        }, "testThread1");
-
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (deadLock2) {
-                    try {
-                        sleep_(100);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Log.e(TAG, "thread2 wait to get deadLock1,currentThread id = " + Thread.currentThread().getId());
-                    synchronized (deadLock1) {
-                        Log.e(TAG, "thread2");
-                    }
-                }
-            }
-        }, "testThread2");
-
-        thread1.start();
-        thread2.start();
-    }
-
-    void sleep_(int time) throws InterruptedException {
-        Thread.sleep(time);
-    }
 
     Thread[] getAllThreads() {
         ThreadGroup currentGroup = Thread.currentThread().getThreadGroup();
