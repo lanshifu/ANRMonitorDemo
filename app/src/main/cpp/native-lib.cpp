@@ -33,19 +33,21 @@ Java_com_lanshifu_demo_anrmonitor_DeadLockMonitor_nativeInit(JNIEnv *env, jobjec
 
 
     // dlopen libart.so
+    //1、初始化
     ndk_init(env);
 
+    //2、加载libart.so
     void *so_addr = ndk_dlopen("libart.so", RTLD_NOLOAD);
     if (so_addr == NULL) {
         return 1;
     }
     // Monitor::GetContendedMonitor
-    //c++方法地址跟c不一样，c++可以重载，方法描述符会变调
+    //c++方法地址跟c不一样，c++可以重载，方法描述符会变
     //http://androidxref.com/8.0.0_r4/xref/system/core/libbacktrace/testdata/arm/libart.so
-    // nm xxx.so
-    // 获取get_contended_monitor 函数，返回值是void*,指向函数的地址
 
-    //这个函数是用来获取当前线程竞争的 Monitor
+    // nm xxx.so
+
+    //获取Monitor::GetContendedMonitor函数符号地址
     get_contended_monitor = ndk_dlsym(so_addr, "_ZN3art7Monitor19GetContendedMonitorEPNS_6ThreadE");
     if (get_contended_monitor == NULL) {
         return 2;

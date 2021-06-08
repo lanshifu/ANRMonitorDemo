@@ -39,9 +39,5 @@ class MainActivity : AppCompatActivity() {
         DeadLockUtil.createDeadLockAnr()
     }
 
-    private fun testDeadLockAnr() {
-
-    }
-
 
 }
