@@ -15,6 +15,10 @@ public class DeadLockMonitor {
 
     private String TAG = "DeadLockMonitor";
 
+    static {
+        System.loadLibrary("native-lib");
+    }
+
     Thread[] getAllThreads() {
         ThreadGroup currentGroup = Thread.currentThread().getThreadGroup();
         while (currentGroup.getParent() != null) {
